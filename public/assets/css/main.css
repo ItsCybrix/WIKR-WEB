@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(36, 36, 36);
+    color: silver;
+    margin: auto;
+}
+
+.site-header{
+    background-color: black;
+    min-height: 75px;
+    max-height: fit-content;
+    border-bottom: 4px solid #2de2e6;
+}
+
+.site-footer{
+    border-top: 4px solid #fd3677;
+    min-height: 75px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    padding: 3px;
+    
+}
+
+a{
+    color: #2de2e6;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 12px;
+}
+
+a:visited{
+    color: #2de2e6;
+}
+
+a:active{
+    color: #541389;
+}
