@@ -15,6 +15,7 @@
                 <audio controls autoplay>
                     <source src="https://ice1.wikrradio.com/WIKR">
                 </audio>
+                <div class="np-info"><span id="np-info">Loading Song Data</div>
             </div>
         </div>
     </div>
@@ -23,5 +24,34 @@
 
     <%- include('./includes/footer') %>
     
+
+
+    <script>
+        function refreshDiv() {
+  // Create a new XMLHttpRequest object
+  const xhr = new XMLHttpRequest();
+
+  // Configure the request
+  xhr.open('GET', '/api/now-playing', true);
+
+  // Set up the callback function for when the request is complete
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      // Update the div's content with the response
+      document.getElementById('np-info').innerHTML = xhr.responseText;
+      document.title = xhr.responseText + " On WIKR";
+    } else {
+      // Handle errors
+      console.error('Request failed with status:', xhr.status);
+    }
+  };
+
+  // Send the request
+  xhr.send();
+}
+
+// Call refreshDiv every 5 seconds (5000 milliseconds)
+setInterval(refreshDiv, 5000);
+    </script>
 </body>
 </html>
