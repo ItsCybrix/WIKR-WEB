@@ -14,6 +14,10 @@ app.all('/', (req, res)=>{
     res.render('index')
 })
 
+app.get('/listen-live', (req, res)=>{
+    res.render('liveplayer');
+})
+
 
 
 
