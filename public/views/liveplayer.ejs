@@ -11,11 +11,16 @@
 
     <div class="main-content">
         <div style="text-align: center;">
-            <div class="iceplayer" style="top: 50%">
+            <div class="iceplayer" style="top: 50%; padding-top: 100px; background-color: black; width: 45%; margin: auto;" >
+
+              <img id="np-image" src="/img/WIKR Logo.png" height="300px" width="300px"><br>
+
+              <div class="np-info"><span id="np-info" style="font-size: 42px;">Loading Song Data</span></div>
+
                 <audio controls autoplay>
                     <source src="https://ice1.wikrradio.com/WIKR">
                 </audio>
-                <div class="np-info"><span id="np-info">Loading Song Data</div>
+                
             </div>
         </div>
     </div>
@@ -39,6 +44,8 @@
     if (xhr.status >= 200 && xhr.status < 300) {
       // Update the div's content with the response
       document.getElementById('np-info').innerHTML = xhr.responseText;
+
+
       document.title = xhr.responseText + " On WIKR";
     } else {
       // Handle errors
@@ -53,5 +60,38 @@
 // Call refreshDiv every 5 seconds (5000 milliseconds)
 setInterval(refreshDiv, 5000);
     </script>
+
+<script>
+  function refreshNPImage() {
+// Create a new XMLHttpRequest object
+const xhr = new XMLHttpRequest();
+
+// Configure the request
+xhr.open('GET', '/api/now-playing-image', true);
+
+// Set up the callback function for when the request is complete
+xhr.onload = function() {
+if (xhr.status >= 200 && xhr.status < 300) {
+// Update the div's content with the response
+
+const npImage = document.getElementById("np-image")
+
+npImage.src = xhr.responseText
+
+
+
+} else {
+// Handle errors
+console.error('Request failed with status:', xhr.status);
+}
+};
+
+// Send the request
+xhr.send();
+}
+
+// Call refreshDiv every 5 seconds (5000 milliseconds)
+setInterval(refreshNPImage, 5000);
+</script>
 </body>
 </html>
