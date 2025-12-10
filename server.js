@@ -1,8 +1,17 @@
 const { default: axios } = require('axios');
 const express = require('express')
 const fs = require('fs')
+const bodyParser = require('body-parser')
 
-const app = express();
+const app = express()
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded())
+
+// parse application/json
+app.use(bodyParser.json())
+
+
 
 app.set('view engine', 'ejs');
 app.use(express.static('./public/assets'))
@@ -40,7 +49,8 @@ app.get('/api/now-playing',(req, res)=>{
 })
 
 app.post('/api/nowplaying', (req, res)=>{
-  console.log('NP POST REQUEST')
+  console.log(req.body)
+  res.status(202)
 })
 
 
