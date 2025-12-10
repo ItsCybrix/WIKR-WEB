@@ -38,7 +38,7 @@ app.get('/api/now-playing',(req, res)=>{
     axios.get('http://ice1.wikrradio.com/status-json.xsl')
       .then(function (response) {
         //console.log(response.data.icestats.source.title);
-        res.send("Great Radio ON WIKR")
+        res.send(response.data.icestats.source.title)
       })
       .catch(function (error) {
         console.log(error);
