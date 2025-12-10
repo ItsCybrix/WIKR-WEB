@@ -29,7 +29,7 @@ app.get('/api/now-playing',(req, res)=>{
     axios.get('http://ice1.wikrradio.com/status-json.xsl')
       .then(function (response) {
         //console.log(response.data.icestats.source.title);
-        res.send(response.data.icestats.source.title)
+        res.send("Great Radio ON WIKR")
       })
       .catch(function (error) {
         console.log(error);
@@ -37,6 +37,10 @@ app.get('/api/now-playing',(req, res)=>{
       .finally(function () {
         // always executed
       });
+})
+
+app.post('/api/nowplaying', (req, res)=>{
+  console.log('NP POST REQUEST')
 })
 
 
