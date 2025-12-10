@@ -51,7 +51,7 @@ app.get('/api/now-playing',(req, res)=>{
 app.post('/api/nowplaying', (req, res)=>{
   console.log(req.body)
   console.log('NP POST');
-  res.status(202)
+  res.status(200)
 })
 
 
