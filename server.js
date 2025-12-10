@@ -33,6 +33,10 @@ app.get('/listen-live', (req, res)=>{
     res.render('liveplayer');
 })
 
+app.get('/about', (req, res)=>{
+    res.render('about');
+})
+
 
 app.get('/api/now-playing',(req, res)=>{
     axios.get('http://ice1.wikrradio.com/status-json.xsl')
