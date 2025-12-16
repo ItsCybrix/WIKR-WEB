@@ -62,7 +62,7 @@ app.post('/api/nowplaying', (req, res)=>{
 app.get('/api/now-playing-image',(req, res)=>{
   axios.get('http://ice1.wikrradio.com/status-json.xsl')
     .then(function (response1) {
-      //console.log(response.data.icestats.source.title);
+      console.log(response.data.icestats.source.title);
 
       axios.get('https://data.wikrradio.com/album-images' + response1.data.icestats.source.title + ".jpg")
       .then(function (response) {
