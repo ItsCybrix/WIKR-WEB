@@ -64,10 +64,10 @@ app.get('/api/now-playing-image',(req, res)=>{
     .then(function (response1) {
       //console.log(response.data.icestats.source.title);
 
-      axios.get('https://assets.wikrradio.com/' + response1.data.icestats.source.title + ".jpg")
+      axios.get('https://data.wikrradio.com/album-images' + response1.data.icestats.source.title + ".jpg")
       .then(function (response) {
         //console.log(response.data.icestats.source.title);
-        res.send('https://assets.wikrradio.com/' + response1.data.icestats.source.title + ".jpg")
+        res.send('https://data.wikrradio.com/album-images' + response1.data.icestats.source.title + ".jpg")
   
         
   
