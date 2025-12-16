@@ -17,9 +17,13 @@
 
               <div class="np-info"><span id="np-info" style="font-size: 42px;">Loading Song Data</span></div>
 
-                <audio controls autoplay>
-                    <source src="https://ice1.wikrradio.com/WIKR">
-                </audio>
+<audio
+  id="player"
+  controls
+  preload="none"
+></audio>
+
+
                 
             </div>
         </div>
@@ -93,5 +97,20 @@ xhr.send();
 // Call refreshDiv every 5 seconds (5000 milliseconds)
 setInterval(refreshNPImage, 5000);
 </script>
+<script>
+  const player = document.getElementById("player");
+
+  function startStream() {
+    const url = "https://ice1.wikrradio.com/WIKR?_=" + Date.now();
+    player.src = url;
+    player.load();
+    player.play().catch(() => {});
+  }
+
+  // Start once on page load
+  startStream();
+</script>
+
+
 </body>
 </html>
