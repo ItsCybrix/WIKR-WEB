@@ -62,12 +62,12 @@ app.post('/api/nowplaying', (req, res)=>{
 app.get('/api/now-playing-image',(req, res)=>{
   axios.get('http://ice1.wikrradio.com/status-json.xsl')
     .then(function (response1) {
-      console.log(response.data.icestats.source.title);
+      //console.log(response1.data.icestats.source.title);
 
-      axios.get('https://data.wikrradio.com/album-images' + response1.data.icestats.source.title + ".jpg")
+      axios.get('https://data.wikrradio.com/album-images/' + response1.data.icestats.source.title + ".jpg")
       .then(function (response) {
         //console.log(response.data.icestats.source.title);
-        res.send('https://data.wikrradio.com/album-images' + response1.data.icestats.source.title + ".jpg")
+        res.send('https://data.wikrradio.com/album-images/' + response1.data.icestats.source.title + ".jpg")
   
         
   
@@ -77,6 +77,7 @@ app.get('/api/now-playing-image',(req, res)=>{
       .catch(function (error) {
         if(error.status == 404){
           res.send('/img/WIKR Logo.png')
+          //console.log('https://data.wikrradio.com/album-images/' + response1.data.icestats.source.title + ".jpg");
         }
       })
       .finally(function () {
